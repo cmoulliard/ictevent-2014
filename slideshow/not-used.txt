@@ -1,0 +1,332 @@
+
+
+// ************** High level presentation ************
+
+== High level presentation - con't
+
+image::fuse/basic-1.png[]
+
+// *********************************
+== High level presentation - con't
+
+image::fuse/basic-2.png[]
+
+// *********************************
+== High level presentation - con't
+
+image::fuse/basic-3.png[]
+
+// *********************************
+== High level presentation - con't
+
+image::fuse/advanced-1.png[]
+
+// *********************************
+== High level presentation - con't
+
+image::fuse/advanced-2.png[]
+
+
+
+
+
+
+
+// ************** Camel ************
+== Camel
+
+image::camel/camel-box-small.png[width="100%",float="right"]
+
+* OpenSource Java **Integration** Framework
+
+[.newline]
+* Designed around : **D**omain **S**pecific **L**anguage
+
+[.newline]
+* Implement **E**nterprise **I**ntegration **P**atterns
+
+image::eip/book.jpg[width="45%",float="right"]
+
+// ************** Camel ************
+//[data-background="white"]
+== Camel - con't
+
+* http://camel.apache.org/enterprise-integration-patterns.html[> 50 patterns] implemented
+* and more : Loadbalancer, Throttler, Delayer, ...
+
+image::eip/patterns.png[width="100%",float="left"]
+
+image::eip/patterns-3.jpg[width="120%",float="left"]
+
+// ************** Camel ************
+== Camel - con't
+
+[cols="35,65"]
+|===
+| .2+|image:camel/factory.png[]
+a| * Key features
+** Component
+** Endpoint
+** Consumer
+** Producer|
+|===
+
+// ************** Camel ************
+== Camel - con't
+
+* Key features : route, processor
+
+image:camel/pipeline.png[]
+
+// ************** Camel ************
+== Camel - con't
+
+* Interceptor : trace, log, capture business events
+
+[.newline]
+image:camel/pipeline2.png[]
+
+// ************** Camel ************
+== Camel - con't
+
+[cols="45,65"]
+|===
+| .2+|image:camel/camel-features.png[]
+a| * Container for the routes +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ CamelContext |
+|===
+
+// ************** Camel ************
+== Camel - con't
+
+[cols="45,65"]
+|===
+| .2+|image:camel/camel-features2.png[]
+a| * Cross communication not allowed using direct, seda |
+|===
+
+// ************** Camel ************
+== Camel - con't
+
+[cols="45,65"]
+|===
+| .2+|image:camel/camel-features3.png[]
+a| * But possible Using BUS like NMR, Broker, Shared Component with direct-vm, vm |
+|===
+
+
+// ************** Camel ************
+== Camel - con't
+
+[cols="65,35"]
+|===
+| .2+|image:camel/type-converter.png[]
+a|* **Type Converter** Strategy
+* Allow to **convert** the body payloads from one type to another
+* To and From these types
+** File
+** String
+** byte[] and ByteBuffer
+** InputStream and OutputStream
+** Reader and Writer|
+|===
+
+// ************** Camel ************
+== Camel - con't
+
+* **Data Transformation** for complex use case
+
+[source, java]
+----
+include::{sourcesdir}/org/devnation/camel/DataFormat.java[]
+----
+
+* **Marshalling** : Object +++<i class="fa fa-arrow-right"></i>+++ XML (JAXB)
+* **Unmarshalling** : XML +++<i class="fa fa-arrow-right"></i>+++ Object (JAXB)
+
+// ************** Camel ************
+== Camel - con't
+
+* http://camel.apache.org/dataformat.html[> 20 Data Format]
+
+image::camel/dataformat-2.png[]
+
+
+// ************** Camel ************
+== Camel - con't
+
+image::camel/inonly.png[width="65%"]
+
+// ************** Camel ************
+== Camel - con't
+
+image::camel/inout.png[width="75%"]
+
+// ************** Camel ************
+== Camel - con't
+
+* Fluent API
+
+[source,java]
+----
+include::{sourcesdir}/org/devnation/camel/ExampleRouteBuilder.java[]
+----
+
+// ************** Camel ************
+== Camel - con't
+
+* Alternative : Spring, Blueprint DSL
+
+[source,xml]
+----
+include::{resourcesdir}/META-INF/org/devnation/camel/example.xml[]
+----
+
+// ************** Camel ************
+== Camel - con't
+
+* In memory bus / alternative to JBI, SCA, NMR
+* Transport objects : XML, File, Stream, Bytes
+* Predicate & Expression language (xslt, xpath, ...)
+* Sync/Async exchanges
+* Threads Management,
+* Tx Architecture
+* Error and exception handling
+* Policy driven
+* Container agnostic
+
+// ************** Camel ************
+== http://camel.apache.org/components.html[Camel - con't]
+
+image::camel/components.png[width="85%"]
+
+// ************** Cxf ************
+
+== Apache CXF
+
+* Simplify 'creation & deployment of web/REST services'
+* 2 approaches “java +++<i class="fa fa-arrow-right"></i>+++ wsdl” or “wsdl +++<i class="fa fa-arrow-right"></i>+++ java”
+* Support :
+ - JAX-WS : Web Services (XML/SOAP)
+ - JAX-RS : REST service (JSON)
+ - SOAP 1.1, 1.2, WSDL 1.1, WS-Security, WS-Addressing, WS-RM
+
+image::fuse/fabric-cxf.png[]
+
+// ************** Cxf ************
+
+== Apache CXF - con't
+
+[source, xml]
+----
+<plugin>
+    <groupId>org.apache.cxf</groupId>
+    <artifactId>cxf-codegen-plugin</artifactId>
+    <version>${cxf.version}</version>
+    <executions>
+        <execution>
+            <id>generate-sources</id>
+            <phase>generate-sources</phase>
+            <configuration>
+                <sourceRoot>${project.build.directory}/generated/cxf</sourceRoot>
+                <wsdlOptions>
+                    <wsdlOption>
+                        <wsdl>${basedir}/src/main/resources/myService.wsdl</wsdl>
+                    </wsdlOption>
+                </wsdlOptions>
+            </configuration>
+            <goals>
+                <goal>wsdl2java</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+----
+
+// ************** Cxf ************
+
+== Apache CXF - con't
+
+[source, xml]
+----
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xmlns:cxf="http://camel.apache.org/schema/cxf"
+...
+
+<cxf:cxfEndpoint id="reportIncident"
+    address="http://localhost:{{port}}/camel-example/webservices/incident"
+    wsdlURL="etc/report_incident.wsdl"
+    serviceClass="org.apache.camel.example.ReportIncidentEndpoint"/>
+...
+
+<route>
+      <from uri="cxf:bean:reportIncident"/>
+      <convertBodyTo type="org.apache.camel.example.reportincident.InputReportIncident"/>
+      <transform>
+        <method bean="responseBean" method="getOK"/>
+      </transform>
+----
+
+// ************** Karaf ************
+
+== Apache Karaf image:integration/karaf-logo.png[float="right"]
+
+* Java Micro-Container
+* OSGI Runtime
+* Offer 'modularity' for Services
+* Multi-Technology platform
+
+image::integration/ship-containers.png[]
+
+// ************** Karaf ************
+
+== Apache Karaf - con't
+
+* SSH server
+* Administration platform (local, remote, web, jmx)
+* Provisioning system (features)
+* Hot deployment and configuration management
+* Instances management
+* Security integration (JAAS)
+
+// ************** Karaf ************
+
+== Apache Karaf - con't
+
+image:integration/karaf-runtime.png[]
+
+* Technology +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ Camel, CXF, ActiveMQ, Spring, Fabric, ...
+* Modular platform (deploy or remove container/libraries)
+
+// ************** ActiveMQ ************
+
+== Apache ActiveMQ
+
+* High performance, reliable JMS messaging fabric
+* Supporting JMS, C, C++, .Net, Stomp clients
+
+image:activemq/broker-architecture.png[]
+
+// ************** ActiveMQ ************
+
+== Apache ActiveMQ - con't
+
+* Point to Point
+ - Producer sends messages to a queue.
+ - Consumer listens for messages from the queue
+ - Messages are stored until read (or expired)
+ - Messages can be persisted, are read only once.
+
+image::activemq/point-to-point.png[]
+
+// ************** ActiveMQ ************
+
+== Apache ActiveMQ - con't
+
+* Publish To Subscribe
+  - A JMS client sends message to the topic.
+  - JMS broker sends message to all subscribers that are currently alive.
+  - Messages are consumed x times (relation 1 to many)
+
+image::activemq/publish-subscribe.png[]

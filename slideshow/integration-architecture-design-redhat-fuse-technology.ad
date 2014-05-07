@@ -1,0 +1,415 @@
+:allow-uri-read:
+:author: Charles Moulliard (@cmoulliard)
+:backend: revealjs
+:blog: http://cmoulliard.github.io
+:data-uri!:
+//:footer_copyright: Powered by http://asciidoctor.org[Asciidoctor], RevealJS and Hyla
+//:footer_copyright: Powered by Asciidoctor, Hyla & RevealJS
+:footer_copyright: Copyright ©2014 Red Hat, Inc.
+:header_image_path: redhat-logo.jpg
+
+:icons: font
+:idprefix:
+:imagesdir: images/
+:linkattrs:
+:linkcss:
+:project_dir: /Users/chmoulli/MyProjects/conferences/ictevent-2014
+:resourcesdir: /Users/chmoulli/MyProjects/conferences/ictevent-2014/slideshow/snippet/src/main/resources
+// Themes : default, beige, moon, blood, night, serif, simple, sky, solarized
+:revealjs_theme: conference-redhat
+:revealjs_vertical_alignment: false
+:revealjs_history: true
+:sourcesdir: /Users/chmoulli/MyProjects/conferences/ictevent-2014/slideshow/snippet/src/main/java/
+:source-highlighter: highlightjs
+//:source-highlighter: coderay, highlightjs, pygments
+:stylesdir: /Users/chmoulli/RedHat/GPE/content/hyla/resources/styles
+:title-author: {title} {author}
+:title-speaker: Architect Engineer Committer
+:twitter: cmoulliard
+
+[data-background="images/redhat-mw-logo-background.png"]
+== *Integration Architecture design with RedHat Fuse Technology*
+
+[.newline]
+ICT Expo - RedHat Village
+
+[.newline]
+{author} +
+Architect, Engineer & Committer
+[.newline]
+8th of May - 2014
+
+// ************ AGENDA ************
+
+== Agenda
+
+* *High level presentation*
+* Architectures design
+* Demos
+
+// ************** High level presentation ************
+
+== High level presentation
+
+image::fuse/rh-fuse-offering.png[width="800",height="600"]
+
+// ************** High level presentation ************
+
+== High level presentation
+
+image::fuse/rh-fuse-offering2.png[]
+
+// ************** High level presentation ************
+
+== High level presentation
+
+* 2 products +++<i class="fa fa-arrow-right"></i>+++ JBoss Fuse & JBoss AMQ
+* Designed around Multi-Technology OSGI Container
+* Packaging of Open Sources projects :
+  - Karaf,
+  - Camel,
+  - Cxf,
+  - ActiveMQ,
+  - Fabric8,
+  - Hawtio
+
+// ************** High level presentation ************
+
+== High level presentation
+
+//image::fuse/jboss-fuse.png[width="80%",height="80%"]
+image::fuse/rh-jboss-fuse.png[]
+
+* Enables *integration everywhere* for a real-time enterprise
+
+// ************** High level presentation ************
+
+== High level presentation
+
+//image::fuse/jboss-amq.png[width="80%",height="80%"]
+image::fuse/rh-jboss-amq.png[]
+
+* An open source *messaging platform*
+
+// ************ AGENDA ************
+== Agenda
+
+* High level presentation
+* *Architectures design*
+* Demos
+
+// ************ Architectures design ***********
+== Architectures design
+
+|===
+| .2+| image:integration/producer-consumer.png[]
+a| * Concept
+** +++<i class="fa fa-arrow-right"></i>+++ Decouple Producer from Consumer
++
+** +++<i class="fa fa-arrow-right"></i>+++ Message transport information |
+|===
+
+// ************ Architectures design ***********
+== Architectures design - con't
+
+|===
+| .2+| image:integration/bus.png[width="95%",float="right"]
+a|
+[.newline]
+* +++&nbsp;<i class="fa fa-wrench"></i>&nbsp;+++ Layer to transport messages : BUS
+
+[.newline]
+* +++&nbsp;<i class="fa fa fa-cog fa-spin"></i>&nbsp;+++  ESB, JBI, SCA
+
+image::integration/jbi.jpeg[width="95%",float="right"] |
+|===
+
+// ************ Architectures design ***********
+== Architectures design - con't
+
+|===
+| .2+| image:integration/esb.png[width="95%",float="right"]
+a| * Provide *connectors / endpoints* to collect information and send it on the bus as messages
+* Allow to separate the *business layer* from those that will *transport* the information and *transform* (marshal) it |
+|===
+
+// ************ Architectures design ***********
+== Architectures design - con't
+
+image::integration/esb1.png[width="800",height="450"]
+
+// ************** Karaf ************
+
+== Apache Karaf image:integration/karaf-logo.png[float="right"]
+
+* Java Micro-Container
+* OSGI Runtime
+* Offer 'modularity' for Services
+* Multi-Technology platform
+
+image::integration/ship-containers.png[]
+
+// ************** Karaf ************
+
+== Apache Karaf - con't
+
+* SSH server
+* Administration platform (local, remote, web, jmx)
+* Provisioning system (features)
+* Hot deployment and configuration management
+* Instances management
+* Security integration (JAAS)
+
+// ************** Karaf ************
+
+== Apache Karaf - con't
+
+image:integration/karaf-runtime.png[]
+
+* Technology +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ Camel, CXF, ActiveMQ, Spring, Fabric, ...
+* Modular platform (deploy or remove container/libraries)
+
+// ************** ActiveMQ ************
+
+== Apache ActiveMQ
+
+* High performance, reliable JMS messaging fabric
+* Supporting JMS, C, C++, .Net, Stomp clients
+
+image:activemq/broker-architecture.png[]
+
+// ************** ActiveMQ ************
+
+== Apache ActiveMQ - con't
+
+* Point to Point
+ - Producer sends messages to a queue.
+ - Consumer listens for messages from the queue
+ - Messages are stored until read (or expired)
+ - Messages can be persisted, are read only once.
+
+image::activemq/point-to-point.png[]
+
+// ************** ActiveMQ ************
+
+== Apache ActiveMQ - con't
+
+* Publish To Subscribe
+  - A JMS client sends message to the topic.
+  - JMS broker sends message to all subscribers that are currently alive.
+  - Messages are consumed x times (relation 1 to many)
+
+image::activemq/publish-subscribe.png[]
+
+// ************** Fabric ************
+
+== Fabric8
+
+* Opensource integration project - http://fabric8.io
+* Idea : Easy to deploy your java *integration* solutions and services on a number of machines, processes and JVMs
+* Goals :
+   - Visualise what is running to understand your platform
+   - Easily *manage* and *monitor* whats running and easily scaling up or down specific profiles
+   - Make configuration, composition or *version changes* in an all-in-one approach or via rolling upgrades
+   - *Virtualize* services (endpoints), processes
+   - Search and *storage* engine (insight)
+
+// ************** Fabric ************
+
+== Fabric8 - con't
+
+[cols="50,50"]
+|===
+| .2+|image:fuse/fabric-3.png[]
+a|* Karaf can create new instances (locally) & administrate them (locally or remotely)
+
++++&nbsp;<i class="fa fa-exclamation-triangle"></i>&nbsp;+++
+
+* Instances are not “cloned”
+* Configurations must be updated (manually)|
+|===
+
+// ************** Fabric ************
+
+== Fabric8 - con't
+
+* Fabric extend the possibilities
+
+image:fuse/fabric-4.png[]
+
+// ************** Fabric ************
+
+== Fabric8 - con't
+
+* And offers *more* with micro-container/service now
+
+image:fuse/fabric-6.png[]
+
+// ************** Fabric ************
+
+== Fabric8 - con't
+
+* Management rely on +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++
+Zookeeper server (ensemble of 1,3, 5 or servers) +++&nbsp;<i class="fa fa-cloud"></i>&nbsp;+++
+
+image:fuse/fabric-1.png[]
+
+// ************** Fabric ************
+
+== Fabric8 - con't
+
+& Fabric Agents
+
+image:fuse/fabric-2.png[]
+
+* They will communicate with Zk server to :
+
++++&nbsp;<i class="fa fa-arrow-left"></i>&nbsp;+++ register container info (ports, services, endpoints, processes)
+
++++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ get their provisioning
+
+// ************** Fabric ************
+
+== Fabric8 - con't
+
+* Provisioning = Behavior of a container, achieved with 'Profiles'
+* Envelope(s) containing artifacts to be deployed or parameters to be configured
+* Can be versioned, facilitate mngt - rollback
+
+image::fuse/fabric-5.png[width="80%",height="80%"]
+
+// ************** Fabric ************
+
+== Fabric8 - con't
+
+* Virtualization +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ Create “indirection” points
+* Load balancing and failover
+* Easy elastic scaling of services
+* High-availability, Replication
+
+// ************** Fabric ************
+
+== Fabric8 - con't
+
+image::fuse/fabric-camel.png[]
+
+// ************** Fabric ************
+
+== Fabric8 - con't
+
+image::fuse/fabric-activemq.png[]
+
+// ************** Fabric ***********
+
+== Fabric8 - con't
+
+* Insight Technology +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++
+* NoSQL storage for JSon documents
+* Designed around ElasticSearch
+
+image::fuse/elasticsearch1.png[float="left"]
+image::fuse/nosql.jpeg[float"right"]
+
+// ************** Fabric ***********
+
+== Fabric8 - con't
+
+* Dashboard
+
+image::fuse/kibana3.png[]
+
+* Full Text Search features
+
+image::fuse/lucene_logo.png[]
+
+// ************** Fabric ***********
+
+== Fabric8 - con't
+
+* Collect
+  - Logs,
+  - Camel metrics,
+  - JMX metrics,
+  - Own data metrics
+
+// ************** Fabric ***********
+
+== Fabric8 - insight
+
+image::fuse/elasticsearch2.png[400,600]
+
+// ************** Fabric ***********
+
+== Fabric8 - insight
+
+image::fuse/elasticsearch.png[80%,80%]
+
+// ************** Fabric ***********
+
+== Fabric8 - insight
+
+image::fuse/es-camel.png[80%,80%]
+
+// ************* Architecture design *******
+
+== Messaging
+
+* The BUS operates the exchanges between the endpoints using Camel (local) or NMR (global)
+
+image::integration/messaging.png[width="70%",height="70%"]
+
+// ************* Architecture design *******
+
+== Messaging & Java Beans
+
+* Decoupling "services" from integration layer
+
+image::integration/messaging-java.png[width="70%",height="70%"]
+
+// ************* Architecture design *******
+
+== Messaging & Java & Web
+
+* Karaf runs Jetty Web Server
+* Web Project can be registered using OSGI HTTP Service
+
+image::integration/messaging-java-web.png[width="70%",height="70%"]
+
+// ************* Architecture design *******
+
+== Distributed
+
+image::integration/distributed.png[]
+
+// ************ AGENDA ************
+== Agenda
+
+* High level presentation
+* Architectures design
+* *Demos*
+
+// ************* DEMOS *******
+
+== Demos
+
+ * Apache Karaf - POJO + Messaging + Web
+ * Apache ActiveMQ - High Availability with Network of Brokers
+ * Fabric8 - Virtualization of Camel endpoints / loadbalancing
+
+// *********************************
+== Questions
+
+[cols="45,.<55"]
+|===
+
+.2+|image:questions.png[]
+a|* Twitter : @cmoulliard
+|===
+
+* More info +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++
+  - www.jboss.org/products/fuse.html
+  - www.redhat.com/products/jbossenterprisemiddleware/fuse/
+
+
+
+
