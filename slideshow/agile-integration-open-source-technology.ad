@@ -30,7 +30,7 @@
 == Agile Integration with Open Source Technology
 
 [.newline]
-ICT Expo - RedHat Village
+RedHat/JBoss Developer Meetup
 
 [.newline]
 {author} +
@@ -51,42 +51,6 @@ Architect, Engineer & Committer
 * **Committer** : Apache ServiceMix, Karaf (PMC), Camel (PMC), Fabric8, Drools, Hawtio, Asciidoctor
 
 image::camel/my-camel.jpg[180,180,float="right"]
-
-// *********************************
-== Speaker - con't
-
-[cols=".^5,.^95"]
-|===
-|image:it/twitter_logo_blue2.png[35,35,vertical-align="top"]|Twitter : http://twitter.com/cmoulliard
-|image:it/linkedin.png[35,35]|LinkedIn : http://www.linkedin.com/in/charlesmoulliard
-|image:it/github.jpg[35,35]|Blog : http://cmoulliard.github.io
-|image:it/slideshare.png[35,35]|Slideshare : http://www.slideshare.net/cmoulliard
-|===
-
-// *********************************
-== Country where I live
-
-|===
-|image:belgium1.jpeg[] | image:atomium.jpeg[width="75%] |image:manneken.jpeg[]
-|image:brussels.jpg[width="85%"]| image:brugge.jpg[width="85%",height="85%"] |
-|===
-
-// *********************************
-== What you should know about Belgium
-
-image::frits.jpeg[float="left"]
-image::chocolate.jpeg[float="left"]
-image::beers.jpeg[float="left"]
-image::bande-dessinee.jpeg[float="left"]
-
-// *********************************
-== My Passion(s)
-
-|===
-| image:photography.jpeg[width="80%",height="80%"] | image:stumpjumper.jpeg[width="80%",height="80%"] |
-| image:nature.jpeg[] | image:formula1.jpeg[] |
-|===
-
 
 // ************ AGENDA ************
 
@@ -138,6 +102,7 @@ a| * Concept
 // ************ Technology overview ***********
 == Integration - con't
 
+[cols="40,60"]
 |===
 | .2+| image:integration/bus.png[width="95%",float="right"]
 a|
@@ -589,6 +554,17 @@ image:fuse/hawtio-5.png[width="65%",height="65%"]
 | JBoss AMQ  | High Availability with Network of Brokers
 | Fabric8    | Micro-Container
 | Fabric8    | Virtualization of Camel endpoints / loadbalancing
+|===
+
+// *********************************
+== Speaker - con't
+
+[cols=".^5,.^95"]
+|===
+|image:it/twitter_logo_blue2.png[35,35,vertical-align="top"]|Twitter : http://twitter.com/cmoulliard
+|image:it/linkedin.png[35,35]|LinkedIn : http://www.linkedin.com/in/charlesmoulliard
+|image:it/github.jpg[35,35]|Blog : http://cmoulliard.github.io
+|image:it/slideshare.png[35,35]|Slideshare : http://www.slideshare.net/cmoulliard
 |===
 
 // *********************************

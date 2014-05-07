@@ -80,6 +80,7 @@ public class CamelMainAppDemo {
                                 logger.info(">> Invoked timer at " + new Date() + " for RouteBuilder");
                             }
                         })*/
+                        .log("Hello RedHat Developer Meetup")
                         .beanRef("myBean", "sayHello")
                         .log(LoggingLevel.INFO, "cool",">> Message received : ${body}");
             }
