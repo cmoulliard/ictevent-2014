@@ -330,3 +330,20 @@ image::activemq/point-to-point.png[]
   - Messages are consumed x times (relation 1 to many)
 
 image::activemq/publish-subscribe.png[]
+
+
+// ************ Technology overview ***********
+== Integration - con't
+
+* Implemented in Apache ServiceMix >3
+
+image::integration/jbi.jpeg[width="750",height="500"]
+
+// ************ Technology overview ***********
+== Integration - con't
+
+* Services & Components communicate using NMR bus
+* Packaged as zip (=SU) including xml config - *routing*,service
+* Messages formated as *XML*
+
+image::integration/esb1.png[width="800",height="450"]
